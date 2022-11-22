@@ -71,6 +71,12 @@ Encore
 
     // uncomment if you're having problems with a jQuery plugin
     //.autoProvidejQuery()
+    // the project directory where compiled assets will be stored
+    .setOutputPath('public/build/')
+    // the public path used by the web server to access the previous directory
+    .setPublicPath('/public/build')
+    // the public path you will use in Symfony's asset() function - e.g. asset('build/some_file.js')
+    .setManifestKeyPrefix('public/build/')
 ;
 
 module.exports = Encore.getWebpackConfig();
