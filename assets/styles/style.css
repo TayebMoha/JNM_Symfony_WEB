@@ -119,7 +119,12 @@ footer ul li a
     position: relative;
 }
 
-footer ul li a:hover
+footer ul li a:hover:not(.factive)
+{
+    opacity: 0.5;
+}
+
+footer ul li a.factive
 {
     opacity: 0.5;
 }

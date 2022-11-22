@@ -26,11 +26,11 @@
 
     <footer>
         <ul>
-            <li><a href="{{ path('app_homepage') }}">Infos & Communications</a></li>
-            <li><a href="{{ path('app_reservation') }}">Réservation</a></li>
-            <li><a href="{{ path('app_concours') }}">Concours</a></li>
-            <li><a href="{{ path('app_nos_partenaires') }}">Nos Partenaires</a></li>
-            <li><a href="{{ path('app_nous_contacter') }}">Nous Contacter</a></li>
+            <li><a{%if app.request.get('_route') == 'app_homepage' %} class="factive"{% endif %}  href="{{ path('app_homepage') }}">Infos & Communications</a></li>
+            <li><a{%if app.request.get('_route') == 'app_reservation' %} class="factive"{% endif %} href="{{ path('app_reservation') }}">Réservation</a></li>
+            <li><a{%if app.request.get('_route') == 'app_concours' %} class="factive"{% endif %} href="{{ path('app_concours') }}">Concours</a></li>
+            <li><a{%if app.request.get('_route') == 'app_nos_partenaires' %} class="factive"{% endif %} href="{{ path('app_nos_partenaires') }}">Nos Partenaires</a></li>
+            <li><a{%if app.request.get('_route') == 'app_nous_contacter' %} class="factive"{% endif %} href="{{ path('app_nous_contacter') }}">Nous Contacter</a></li>
         </ul>
         <p class="copyright">Anaëlle Goncalves | Ludjie Alnatas | Tayeb Mohammedi © 2022</p>
     </footer>
