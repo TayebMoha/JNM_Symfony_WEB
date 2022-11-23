@@ -3,9 +3,37 @@
 {% block title %}Hello HomeController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
+    <div id="compte_a_rebours">
+        <div id="nb_j"></div>
+        <div id="jours"></div>
+    </div>
+
+    <script type="text/javascript">
+        let nb_jours = document.getElementById('nb_j');
+        let j = document.getElementById('jours');
+
+
+        let date_actuelle = new Date();
+        let date_evenement = new Date("May 2 00:00:00 2023");
+        let total_secondes = (date_evenement - date_actuelle) / 1000;
+        let jours = Math.floor(total_secondes / (60 * 60 * 24));
+
+
+        let mot_jour = "Jours";
+
+
+        if (jours === 0) {
+            jours = '';
+            mot_jour = '';
+        }
+        else if (jours === 1)
+        {
+            mot_jour = "Jour";
+        }
+
+        nb_jours.innerHTML = jours;
+        j.innerHTML = mot_jour;
+    </script>
 
 {% endblock %}

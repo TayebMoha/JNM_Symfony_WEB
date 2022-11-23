@@ -5,7 +5,7 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
 
         {% block stylesheets %}{% endblock %}
-        <link rel="stylesheet" href="{{ asset('build/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('build/styles.css') }}">
 
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
@@ -24,6 +24,10 @@
         </ul>
     </header>
 
+    {% block body %}
+
+    {% endblock %}
+
     <footer>
         <ul>
             <li><a{%if app.request.get('_route') == 'app_homepage' %} class="factive"{% endif %}  href="{{ path('app_homepage') }}">Infos & Communications</a></li>
@@ -34,6 +38,6 @@
         </ul>
         <p class="copyright">Anaëlle Goncalves | Ludjie Alnatas | Tayeb Mohammedi © 2022</p>
     </footer>
-        {% block body %}{% endblock %}
+
     </body>
 </html>
