@@ -4,11 +4,27 @@
 
 {% block body %}
 
-    <div id="compte_a_rebours">
-        <div id="nb_j"></div>
-        <div id="jours"></div>
+    <div id="accueil">
+        <div id="compte_a_rebours">
+            <h2 id="nb_j"></h2>
+            <h2 id="jours"></h2>
+        </div>
+        <div id="infos">
+            <h2 id="participant">xx Participants</h2>
+            <h2 id="miage">22 MIAGE</h2>
+            <h2 id="partenaire">xx Partenaires</h2>
+        </div>
     </div>
-
+    <div id="nanterre">
+        <div id="photo">
+            <h2 id="nb_j">nnnnnnnn</h2>
+        </div>
+        <div id="infos_n">
+            <h2 id="participant">fffff</h2>
+            <h2 id="miage">rrrrr</h2>
+            <h2 id="partenaire">yyyyyy</h2>
+        </div>
+    </div>
     <script type="text/javascript">
         let nb_jours = document.getElementById('nb_j');
         let j = document.getElementById('jours');
@@ -34,6 +50,12 @@
 
         nb_jours.innerHTML = jours;
         j.innerHTML = mot_jour;
+
+
+
+
+
+
     </script>
 
 {% endblock %}
