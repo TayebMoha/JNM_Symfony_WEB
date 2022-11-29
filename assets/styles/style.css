@@ -14,6 +14,7 @@ body {
     flex-direction: column;
 }
 
+/*header*/
 header {
     position: absolute;
     top: 0;
@@ -81,6 +82,8 @@ header ul li a.active {
     color: #252525;
 }
 
+
+/*footer*/
 footer {
     background-color: #252525;
     color: #4b4c4d;
@@ -126,171 +129,4 @@ footer .copyright {
     font-size: 13px;
     color: #aaa;
     margin-bottom: 0;
-}
-
-#accueil{
-    position: relative;
-    width: 100%;
-    margin: auto;
-    margin-top: 250px;
-    height: 250px;
-}
-
-#compte_a_rebours {
-    margin: auto;
-    color: #fff;
-    font-weight: 500;
-    font-size: 7vw;
-    text-transform: uppercase;
-    letter-spacing: -0.7vw;
-    align-items: start;
-    float: left;
-    margin-left: 133px;
-}
-
-#nb_j {
-    text-align: center;
-}
-
-#jours {
-    margin: auto;
-}
-
-#infos {
-    margin: auto;
-    float: right;
-    color: #fff;
-    font-weight: 700;
-    font-size: 2vw;
-    text-transform: uppercase;
-    align-items: start;
-    margin-top: 50px;
-    margin-right: 230px;
-}
-
-#miages{
-    margin: auto;
-    padding-bottom : 40px;
-}
-
-#participant{
-    margin: auto;
-    padding-bottom : 40px;
-}
-
-#nanterre{
-    margin-top: 400px;
-    position: relative;
-    align-items: end;
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-size: cover;
-    background-position: center;
-    /*background-image:url("https://micefa.org/wp-content/uploads/2017/10/Paris-Ouest-Nanterre-%C2%A9-Universite%CC%81-Paris-Ouest-Nanterre-Service-communication-1024x681.jpg");*/
-    background-attachment: fixed;
-    height: 510px;
-}
-
-#infos_n{
-    width: 50%;
-    float: right;
-    margin-right: 50px;
-    padding: 8vmin;
-    background: hsla(0, 100%, 0%, .5);
-}
-
-#infos_n h2{
-    text-align: end;
-    color: white;
-    font-weight: 700;
-    font-size: 2vw;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-}
-
-#infos_n p{
-    text-align: end;
-    color: white;
-    font-weight: 700;
-}
-
-#miage{
-    margin-top: 200px;
-    position: relative;
-    align-items: end;
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-size: cover;
-    background-position: center;
-    /*background-image:url("https://images6.alphacoders.com/456/456498.jpg");*/
-    background-attachment: fixed;
-    height: 510px;
-}
-
-#infos_m{
-    width: 50%;
-    float: left;
-    margin-right: 700px;
-    padding: 8vmin;
-    background: hsla(0, 100%, 0%, .5);
-}
-
-#infos_m h2{
-    text-align: start;
-    color: white;
-    font-weight: 700;
-    font-size: 2vw;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-}
-
-#infos_m p{
-    text-align: start;
-    color: white;
-    font-weight: 700;
-}
-
-#paris{
-    margin-top: 200px;
-    position: relative;
-    align-items: end;
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-size: cover;
-    background-position: center;
-   /* background-image:url("https://wallpaperaccess.com/full/1192125.jpg");*/
-    background-attachment: fixed;
-    height: 510px;
-}
-
-#infos_p{
-    width: 50%;
-    float: right;
-    margin-right: 50px;
-    padding: 8vmin;
-    background: hsla(0, 100%, 0%, .5);
-}
-
-#infos_p h2{
-    text-align: end;
-    color: white;
-    font-weight: 700;
-    font-size: 2vw;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-}
-
-#infos_p p{
-    text-align: end;
-    color: white;
-    font-weight: 700;
 }

@@ -3,18 +3,170 @@
 {% block title %}Hello NousContacterController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <div class="login">
+        <h2>Contactez nous</h2>
+        <h3>    </h3>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+        <!-- <h3>Content de vous revoir user</h3> -->
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/tmohammedi/UNI/ProjetWEBPHP/JNM_Symfony_WEB/src/Controller/NousContacterController.php'|file_link(0) }}">src/Controller/NousContacterController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/tmohammedi/UNI/ProjetWEBPHP/JNM_Symfony_WEB/templates/nous_contacter/index.html.twig'|file_link(0) }}">templates/nous_contacter/index.html.twig</a></code></li>
-    </ul>
-</div>
+        <form class="login-form">
+            <div class="textbox">
+                <input type="text" placeholder="Nom" />
+                <span class="material-symbols-outlined"> account_circle </span>
+            </div>
+            <div class="textbox">
+                <input type="email" placeholder="Mail" />
+                <span id="message" class="material-symbols-outlined"> mail </span>
+            </div>
+            <div class="messagebox">
+                <textarea placeholder="Message" style="height:180px;" ></textarea>
+                <span class="material-symbols-outlined"> message </span>
+            </div>
+
+            <!--<button type="submit">Créer un Compte</button>-->
+            <button type="submit">Envoyer Message</button>
+        </form>
+    </div>
+
+    <style>
+        @keyframes rotate {
+            100% {
+                background-position: 15% 50%;
+            }
+        }
+
+        body {
+            display: flex;
+            position: relative;
+            min-height: 100vh;
+            background-image: url({{ asset('images/waves.svg')}});
+            background-size: 135rem;
+            flex-direction: column;
+            animation: rotate 6s infinite alternate linear;
+        }
+        .login {
+            position: relative;
+            margin-top: 450px;
+            margin-left: 10px;
+            margin-bottom: -250px;
+            z-index: 3;
+            top: 50%;
+            left: 50%;
+            translate: -50% -50%;
+            padding: 70px 30px 44px;
+            border-radius: 22px;
+            background: #161616;
+            text-align: center;
+            width: 380px
+        }
+
+        .login > h2 {
+            color: rgba(255, 255, 255, 0.38);
+            font-size: 36px;
+            font-weight: 500;
+            margin: 0 0 4px;
+        }
+
+        .login > h3 {
+            color: rgba(255, 255, 255, 0.38);
+            margin: 0 0 30px;
+            font-weight: 500;
+            font-size: 16px;
+        }
+
+        .login-form {
+            display: grid;
+            gap: 16px;
+            place-items: center;
+            width: 100%;
+            margin: 0;
+        }
+
+        .textbox, .messagebox {
+            color: rgba(255, 255, 255, 0.38);
+            width: 100%;
+            position: relative;
+        }
+
+        .textbox span {
+            position: absolute;
+            top: 50%;
+            left: 16px;
+            translate: 0 -50%;
+            color: rgba(255, 255, 255, 0.38);
+        }
+
+        .login-form input,
+        .login-form button {
+            width: 100%;
+            height: 60px;
+            outline: none;
+            padding: 0;
+            font-family: inherit;
+            font-size: 16px;
+            border-radius: 8px;
+        }
+
+        .login-form input {
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            font-size: 18px;
+            padding: 0 20px 0 50px;
+            color: inherit;
+        }
+
+        .login-form input:focus {
+            border-color: #4b4c4d;
+        }
+
+        .login-form input:focus ~ span {
+            color: #8e44ad;
+        }
+
+        .login-form textarea {
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            font-size: 18px;
+            padding: 18px 20px 0 50px;
+            color: inherit;
+            height: 169px;
+            width: 319px;
+            resize : none;
+            border-radius : 8px
+        }
+
+        .messagebox span{
+
+            position: absolute;
+            top: 18%;
+            left: 16px;
+            translate: 0 -50%;
+            color: rgba(255, 255, 255, 0.38);
+        }
+
+        .login-form textarea:focus {
+            border-color: #4b4c4d;
+        }
+
+        .login-form textarea:focus ~ span {
+            color: #8e44ad;
+        }
+
+        .login-form button {
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.38);
+            color: #f9f9f9;
+            border: 0;
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+
+        .login-form a {
+            color: rgba(255, 255, 255, 0.38);
+            font-size: 16px;
+            text-align: left;
+            text-decoration: none;
+        }
+
+    </style>
 {% endblock %}
