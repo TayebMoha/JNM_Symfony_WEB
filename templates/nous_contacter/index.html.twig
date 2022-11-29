@@ -34,30 +34,23 @@
                 background-position: 15% 50%;
             }
         }
-
         body {
-            display: flex;
-            position: relative;
-            min-height: 100vh;
             background-image: url({{ asset('images/waves.svg')}});
-            background-size: 135rem;
-            flex-direction: column;
+            background-size: 130rem;
+            background-repeat: no-repeat;
             animation: rotate 6s infinite alternate linear;
         }
         .login {
             position: relative;
-            margin-top: 450px;
-            margin-left: 10px;
-            margin-bottom: -250px;
+            margin-top: 154px;
+            margin-left: 550px;
+            margin-bottom: 80px;
             z-index: 3;
-            top: 50%;
-            left: 50%;
-            translate: -50% -50%;
             padding: 70px 30px 44px;
             border-radius: 22px;
             background: #161616;
             text-align: center;
-            width: 380px
+            width: 380px;
         }
 
         .login > h2 {
@@ -167,6 +160,5 @@
             text-align: left;
             text-decoration: none;
         }
-
     </style>
 {% endblock %}
