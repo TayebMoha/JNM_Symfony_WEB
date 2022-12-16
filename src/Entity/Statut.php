@@ -16,14 +16,14 @@ class Statut
     private ?int $id = null;
 
     #[ORM\Column(length: 50)]
-    private ?string $categorieS = null;
+    private ?string $categoriesS = null;
 
     #[ORM\ManyToMany(targetEntity: Utilisateur::class, mappedBy: 'refStatut')]
-    private Collection $utilisateurs;
+    private Collection $refUtilisateur;
 
     public function __construct()
     {
-        $this->utilisateurs = new ArrayCollection();
+        $this->refUtilisateur = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -31,14 +31,14 @@ class Statut
         return $this->id;
     }
 
-    public function getCategorieS(): ?string
+    public function getCategoriesS(): ?string
     {
-        return $this->categorieS;
+        return $this->categoriesS;
     }
 
-    public function setCategorieS(string $categorieS): self
+    public function setCategoriesS(string $categoriesS): self
     {
-        $this->categorieS = $categorieS;
+        $this->categoriesS = $categoriesS;
 
         return $this;
     }
@@ -46,25 +46,25 @@ class Statut
     /**
      * @return Collection<int, Utilisateur>
      */
-    public function getUtilisateurs(): Collection
+    public function getRefUtilisateur(): Collection
     {
-        return $this->utilisateurs;
+        return $this->refUtilisateur;
     }
 
-    public function addUtilisateur(Utilisateur $utilisateur): self
+    public function addRefUtilisateur(Utilisateur $refUtilisateur): self
     {
-        if (!$this->utilisateurs->contains($utilisateur)) {
-            $this->utilisateurs->add($utilisateur);
-            $utilisateur->addRefStatut($this);
+        if (!$this->refUtilisateur->contains($refUtilisateur)) {
+            $this->refUtilisateur->add($refUtilisateur);
+            $refUtilisateur->addRefStatut($this);
         }
 
         return $this;
     }
 
-    public function removeUtilisateur(Utilisateur $utilisateur): self
+    public function removeRefUtilisateur(Utilisateur $refUtilisateur): self
     {
-        if ($this->utilisateurs->removeElement($utilisateur)) {
-            $utilisateur->removeRefStatut($this);
+        if ($this->refUtilisateur->removeElement($refUtilisateur)) {
+            $refUtilisateur->removeRefStatut($this);
         }
 
         return $this;

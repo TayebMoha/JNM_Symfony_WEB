@@ -17,7 +17,7 @@ class Activite
     private ?int $id = null;
 
     #[ORM\Column(length: 50)]
-    private ?string $categorieA = null;
+    private ?string $categorie = null;
 
     #[ORM\Column]
     private ?int $prix = null;
@@ -26,11 +26,11 @@ class Activite
     private ?string $description = null;
 
     #[ORM\ManyToMany(targetEntity: Utilisateur::class, mappedBy: 'refActivite')]
-    private Collection $refUtilisateurs;
+    private Collection $refUtilisateur;
 
     public function __construct()
     {
-        $this->refUtilisateurs = new ArrayCollection();
+        $this->refUtilisateur = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -38,14 +38,14 @@ class Activite
         return $this->id;
     }
 
-    public function getCategorieA(): ?string
+    public function getCategorie(): ?string
     {
-        return $this->categorieA;
+        return $this->categorie;
     }
 
-    public function setCategorieA(string $categorieA): self
+    public function setCategorie(string $categorie): self
     {
-        $this->categorieA = $categorieA;
+        $this->categorie = $categorie;
 
         return $this;
     }
@@ -77,15 +77,15 @@ class Activite
     /**
      * @return Collection<int, Utilisateur>
      */
-    public function getRefUtilisateurs(): Collection
+    public function getRefUtilisateur(): Collection
     {
-        return $this->refUtilisateurs;
+        return $this->refUtilisateur;
     }
 
     public function addRefUtilisateur(Utilisateur $refUtilisateur): self
     {
-        if (!$this->refUtilisateurs->contains($refUtilisateur)) {
-            $this->refUtilisateurs->add($refUtilisateur);
+        if (!$this->refUtilisateur->contains($refUtilisateur)) {
+            $this->refUtilisateur->add($refUtilisateur);
             $refUtilisateur->addRefActivite($this);
         }
 
@@ -94,7 +94,7 @@ class Activite
 
     public function removeRefUtilisateur(Utilisateur $refUtilisateur): self
     {
-        if ($this->refUtilisateurs->removeElement($refUtilisateur)) {
+        if ($this->refUtilisateur->removeElement($refUtilisateur)) {
             $refUtilisateur->removeRefActivite($this);
         }
 

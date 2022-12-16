@@ -14,10 +14,10 @@ class Partenaire
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 50)]
+    #[ORM\Column(length: 70)]
     private ?string $nom = null;
 
-    #[ORM\Column(length: 50)]
+    #[ORM\Column(length: 70)]
     private ?string $adresse = null;
 
     #[ORM\Column(length: 50)]

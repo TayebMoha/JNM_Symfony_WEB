@@ -6,20 +6,28 @@ use App\Repository\UtilisateurRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UtilisateurRepository::class)]
-class Utilisateur
+class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 60)]
-    private ?string $identifiant = null;
+    #[ORM\Column(length: 180, unique: true)]
+    private ?string $email = null;
 
-    #[ORM\Column(length: 50)]
-    private ?string $mdp = null;
+    #[ORM\Column]
+    private array $roles = [];
+
+    /**
+     * @var string The hashed password
+     */
+    #[ORM\Column]
+    private ?string $password = null;
 
     #[ORM\Column(length: 50)]
     private ?string $nom = null;
@@ -27,37 +35,37 @@ class Utilisateur
     #[ORM\Column(length: 50)]
     private ?string $prenom = null;
 
-    #[ORM\Column(length: 10)]
+    #[ORM\Column(length: 50)]
     private ?string $dateNaissance = null;
 
     #[ORM\Column(length: 50)]
     private ?string $provenance = null;
 
-    #[ORM\Column(length: 100)]
+    #[ORM\Column(length: 70)]
     private ?string $adresse = null;
 
-    #[ORM\Column]
-    private ?int $tel = null;
+    #[ORM\Column(length: 50)]
+    private ?string $numTel = null;
 
-    #[ORM\ManyToOne(inversedBy: 'utilisateurs')]
+    #[ORM\ManyToOne(inversedBy: 'refUtilisateurs')]
     private ?Video $refVideo = null;
 
-    #[ORM\ManyToOne(inversedBy: 'utilisateurs')]
+    #[ORM\ManyToOne(inversedBy: 'refUtilisateur')]
     private ?Logement $refLogement = null;
 
-    #[ORM\ManyToOne(inversedBy: 'utilisateurs')]
+    #[ORM\ManyToOne(inversedBy: 'refUtilisateurs')]
     private ?Navigo $refNavigo = null;
 
-    #[ORM\ManyToMany(targetEntity: Statut::class, inversedBy: 'utilisateurs')]
-    private Collection $refStatut;
-
-    #[ORM\ManyToMany(targetEntity: Activite::class, inversedBy: 'refUtilisateurs')]
+    #[ORM\ManyToMany(targetEntity: Activite::class, inversedBy: 'refUtilisateur')]
     private Collection $refActivite;
+
+    #[ORM\ManyToMany(targetEntity: Statut::class, inversedBy: 'refUtilisateur')]
+    private Collection $refStatut;
 
     public function __construct()
     {
-        $this->refStatut = new ArrayCollection();
         $this->refActivite = new ArrayCollection();
+        $this->refStatut = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -65,28 +73,69 @@ class Utilisateur
         return $this->id;
     }
 
-    public function getIdentifiant(): ?string
+    public function getEmail(): ?string
     {
-        return $this->identifiant;
+        return $this->email;
     }
 
-    public function setIdentifiant(string $identifiant): self
+    public function setEmail(string $email): self
     {
-        $this->identifiant = $identifiant;
+        $this->email = $email;
 
         return $this;
     }
 
-    public function getMdp(): ?string
+    /**
+     * A visual identifier that represents this user.
+     *
+     * @see UserInterface
+     */
+    public function getUserIdentifier(): string
     {
-        return $this->mdp;
+        return (string) $this->email;
     }
 
-    public function setMdp(string $mdp): self
+    /**
+     * @see UserInterface
+     */
+    public function getRoles(): array
     {
-        $this->mdp = $mdp;
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
+    }
+
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
 
         return $this;
+    }
+
+    /**
+     * @see PasswordAuthenticatedUserInterface
+     */
+    public function getPassword(): string
+    {
+        return $this->password;
+    }
+
+    public function setPassword(string $password): self
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function eraseCredentials()
+    {
+        // If you store any temporary, sensitive data on the user, clear it here
+        // $this->plainPassword = null;
     }
 
     public function getNom(): ?string
@@ -149,14 +198,14 @@ class Utilisateur
         return $this;
     }
 
-    public function getTel(): ?int
+    public function getNumTel(): ?string
     {
-        return $this->tel;
+        return $this->numTel;
     }
 
-    public function setTel(int $tel): self
+    public function setNumTel(string $numTel): self
     {
-        $this->tel = $tel;
+        $this->numTel = $numTel;
 
         return $this;
     }
@@ -198,30 +247,6 @@ class Utilisateur
     }
 
     /**
-     * @return Collection<int, Statut>
-     */
-    public function getRefStatut(): Collection
-    {
-        return $this->refStatut;
-    }
-
-    public function addRefStatut(Statut $refStatut): self
-    {
-        if (!$this->refStatut->contains($refStatut)) {
-            $this->refStatut->add($refStatut);
-        }
-
-        return $this;
-    }
-
-    public function removeRefStatut(Statut $refStatut): self
-    {
-        $this->refStatut->removeElement($refStatut);
-
-        return $this;
-    }
-
-    /**
      * @return Collection<int, Activite>
      */
     public function getRefActivite(): Collection
@@ -241,6 +266,30 @@ class Utilisateur
     public function removeRefActivite(Activite $refActivite): self
     {
         $this->refActivite->removeElement($refActivite);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Statut>
+     */
+    public function getRefStatut(): Collection
+    {
+        return $this->refStatut;
+    }
+
+    public function addRefStatut(Statut $refStatut): self
+    {
+        if (!$this->refStatut->contains($refStatut)) {
+            $this->refStatut->add($refStatut);
+        }
+
+        return $this;
+    }
+
+    public function removeRefStatut(Statut $refStatut): self
+    {
+        $this->refStatut->removeElement($refStatut);
 
         return $this;
     }

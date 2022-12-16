@@ -21,18 +21,18 @@ class Video
     #[ORM\Column(length: 255)]
     private ?string $lien = null;
 
-    #[ORM\Column(length: 50)]
+    #[ORM\Column(length: 60)]
     private ?string $miage = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?int $score = null;
 
     #[ORM\OneToMany(mappedBy: 'refVideo', targetEntity: Utilisateur::class)]
-    private Collection $utilisateurs;
+    private Collection $refUtilisateurs;
 
     public function __construct()
     {
-        $this->utilisateurs = new ArrayCollection();
+        $this->refUtilisateurs = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -81,7 +81,7 @@ class Video
         return $this->score;
     }
 
-    public function setScore(int $score): self
+    public function setScore(?int $score): self
     {
         $this->score = $score;
 
@@ -91,27 +91,27 @@ class Video
     /**
      * @return Collection<int, Utilisateur>
      */
-    public function getUtilisateurs(): Collection
+    public function getRefUtilisateurs(): Collection
     {
-        return $this->utilisateurs;
+        return $this->refUtilisateurs;
     }
 
-    public function addUtilisateur(Utilisateur $utilisateur): self
+    public function addRefUtilisateur(Utilisateur $refUtilisateur): self
     {
-        if (!$this->utilisateurs->contains($utilisateur)) {
-            $this->utilisateurs->add($utilisateur);
-            $utilisateur->setRefVideo($this);
+        if (!$this->refUtilisateurs->contains($refUtilisateur)) {
+            $this->refUtilisateurs->add($refUtilisateur);
+            $refUtilisateur->setRefVideo($this);
         }
 
         return $this;
     }
 
-    public function removeUtilisateur(Utilisateur $utilisateur): self
+    public function removeRefUtilisateur(Utilisateur $refUtilisateur): self
     {
-        if ($this->utilisateurs->removeElement($utilisateur)) {
+        if ($this->refUtilisateurs->removeElement($refUtilisateur)) {
             // set the owning side to null (unless already changed)
-            if ($utilisateur->getRefVideo() === $this) {
-                $utilisateur->setRefVideo(null);
+            if ($refUtilisateur->getRefVideo() === $this) {
+                $refUtilisateur->setRefVideo(null);
             }
         }
 

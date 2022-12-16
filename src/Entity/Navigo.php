@@ -22,11 +22,11 @@ class Navigo
     private ?int $prix = null;
 
     #[ORM\OneToMany(mappedBy: 'refNavigo', targetEntity: Utilisateur::class)]
-    private Collection $utilisateurs;
+    private Collection $refUtilisateurs;
 
     public function __construct()
     {
-        $this->utilisateurs = new ArrayCollection();
+        $this->refUtilisateurs = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -61,27 +61,27 @@ class Navigo
     /**
      * @return Collection<int, Utilisateur>
      */
-    public function getUtilisateurs(): Collection
+    public function getRefUtilisateurs(): Collection
     {
-        return $this->utilisateurs;
+        return $this->refUtilisateurs;
     }
 
-    public function addUtilisateur(Utilisateur $utilisateur): self
+    public function addRefUtilisateur(Utilisateur $refUtilisateur): self
     {
-        if (!$this->utilisateurs->contains($utilisateur)) {
-            $this->utilisateurs->add($utilisateur);
-            $utilisateur->setRefNavigo($this);
+        if (!$this->refUtilisateurs->contains($refUtilisateur)) {
+            $this->refUtilisateurs->add($refUtilisateur);
+            $refUtilisateur->setRefNavigo($this);
         }
 
         return $this;
     }
 
-    public function removeUtilisateur(Utilisateur $utilisateur): self
+    public function removeRefUtilisateur(Utilisateur $refUtilisateur): self
     {
-        if ($this->utilisateurs->removeElement($utilisateur)) {
+        if ($this->refUtilisateurs->removeElement($refUtilisateur)) {
             // set the owning side to null (unless already changed)
-            if ($utilisateur->getRefNavigo() === $this) {
-                $utilisateur->setRefNavigo(null);
+            if ($refUtilisateur->getRefNavigo() === $this) {
+                $refUtilisateur->setRefNavigo(null);
             }
         }
 

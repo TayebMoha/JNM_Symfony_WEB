@@ -25,15 +25,15 @@ class Logement
     #[ORM\Column]
     private ?int $prix = null;
 
-    #[ORM\Column(length: 50)]
+    #[ORM\Column(length: 60)]
     private ?string $ville = null;
 
     #[ORM\OneToMany(mappedBy: 'refLogement', targetEntity: Utilisateur::class)]
-    private Collection $utilisateurs;
+    private Collection $refUtilisateur;
 
     public function __construct()
     {
-        $this->utilisateurs = new ArrayCollection();
+        $this->refUtilisateur = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -92,27 +92,27 @@ class Logement
     /**
      * @return Collection<int, Utilisateur>
      */
-    public function getUtilisateurs(): Collection
+    public function getRefUtilisateur(): Collection
     {
-        return $this->utilisateurs;
+        return $this->refUtilisateur;
     }
 
-    public function addUtilisateur(Utilisateur $utilisateur): self
+    public function addRefUtilisateur(Utilisateur $refUtilisateur): self
     {
-        if (!$this->utilisateurs->contains($utilisateur)) {
-            $this->utilisateurs->add($utilisateur);
-            $utilisateur->setRefLogement($this);
+        if (!$this->refUtilisateur->contains($refUtilisateur)) {
+            $this->refUtilisateur->add($refUtilisateur);
+            $refUtilisateur->setRefLogement($this);
         }
 
         return $this;
     }
 
-    public function removeUtilisateur(Utilisateur $utilisateur): self
+    public function removeRefUtilisateur(Utilisateur $refUtilisateur): self
     {
-        if ($this->utilisateurs->removeElement($utilisateur)) {
+        if ($this->refUtilisateur->removeElement($refUtilisateur)) {
             // set the owning side to null (unless already changed)
-            if ($utilisateur->getRefLogement() === $this) {
-                $utilisateur->setRefLogement(null);
+            if ($refUtilisateur->getRefLogement() === $this) {
+                $refUtilisateur->setRefLogement(null);
             }
         }
 
