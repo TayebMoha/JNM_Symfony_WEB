@@ -16,12 +16,17 @@
     <header>
         <a href="{{ path('app_homepage') }}" class="logo">JNM</a>
         <ul>
-            <li><a{%if app.request.get('_route') == 'app_homepage' %} class="active"{% endif %} href="{{ path('app_homepage') }}">Infos & Communications</a></li>
-            <li><a{%if app.request.get('_route') == 'app_reservation' %} class="active"{% endif %} href="{{ path('app_reservation') }}">Réservation</a></li>
-            <li><a{%if app.request.get('_route') == 'app_concours' %} class="active"{% endif %} href="{{ path('app_concours') }}">Concours</a></li>
-            <li><a{%if app.request.get('_route') == 'app_nos_partenaires' %} class="active"{% endif %} href="{{ path('app_nos_partenaires') }}">Nos Partenaires</a></li>
-            <li><a{%if app.request.get('_route') == 'app_connexion' %} class="active"{% endif %} href="{{ path('app_connexion') }}">Connexion</a></li>
-            <li><a{%if app.request.get('_route') == 'app_admin' %} class="active"{% endif %} href="{{ path('app_admin') }}">Admin</a></li>
+            {% if app.user %}
+                <li><a{%if app.request.get('_route') == 'app_homepage' %} class="active"{% endif %} href="{{ path('app_homepage') }}">Infos & Communications</a></li>
+                <li><a{%if app.request.get('_route') == 'app_reservation' %} class="active"{% endif %} href="{{ path('app_reservation') }}">Réservation</a></li>
+                <li><a{%if app.request.get('_route') == 'app_concours' %} class="active"{% endif %} href="{{ path('app_concours') }}">Concours</a></li>
+                <li><a{%if app.request.get('_route') == 'app_nos_partenaires' %} class="active"{% endif %} href="{{ path('app_nos_partenaires') }}">Nos Partenaires</a></li>
+            {% else %}
+                <li><a{%if app.request.get('_route') == 'app_homepage' %} class="active"{% endif %} href="{{ path('app_homepage') }}">Infos & Communications</a></li>
+                <li><a{%if app.request.get('_route') == 'app_nos_partenaires' %} class="active"{% endif %} href="{{ path('app_nos_partenaires') }}">Nos Partenaires</a></li>
+                <li><a{%if app.request.get('_route') == 'app_register' %} class="active"{% endif %} href="{{ path('app_register') }}">Connexion</a></li>
+                <li><a{%if app.request.get('_route') == 'app_admin' %} class="active"{% endif %} href="{{ path('app_admin') }}">Admin</a></li>
+            {% endif %}
         </ul>
     </header>
     {% block body %}
