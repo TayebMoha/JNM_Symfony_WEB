@@ -11,6 +11,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class RegistrationFormType extends AbstractType
 {
@@ -46,7 +47,34 @@ class RegistrationFormType extends AbstractType
             ->add('nom')
             ->add('prenom')
             ->add('adresse')
-            ->add('provenance')
+            ->add('provenance', ChoiceType::class, array(
+                'placeholder' => 'Provenance',
+                'choices'  =>
+                    [
+                        'MIAGE Aix Marseille' => 'MIAGE Aix Marseille',
+                        'MIAGE Amiens' => 'MIAGE Amiens',
+                        'MIAGE Antilles' => 'MIAGE Antilles',
+                        'MIAGE Bordeaux' => 'MIAGE Bordeaux',
+                        'MIAGE Grenoble' => 'MIAGE Grenoble',
+                        'MIAGE Lille' => 'MIAGE Lille',
+                        'MIAGE Lyon' => 'MIAGE Lyon',
+                        'MIAGE Mulhouse' => 'MIAGE Mulhouse',
+                        'MIAGE Nancy' => 'MIAGE Nancy',
+                        'MIAGE Nantes' => 'MIAGE Nantes',
+                        'MIAGE Nice' => 'MIAGE Nice',
+                        'MIAGE Nouvelle-Calédonie' => 'MIAGE Nouvelle-Calédonie',
+                        'MIAGE Orléans' => 'MIAGE Orléans',
+                        'MIAGE Paris Dauphine' => 'MIAGE Paris Dauphine',
+                        'MIAGE Paris Descartes' => 'MIAGE Paris Descartes',
+                        'MIAGE Paris Nanterre' => 'MIAGE Paris Nanterre',
+                        'MIAGE Paris Saclay/Evry' => 'MIAGE Paris Saclay/Evry',
+                        'MIAGE Paris Saclay/Orsay' => 'MIAGE Paris Saclay/Orsay',
+                        'MIAGE Paris Sorbonne' => 'MIAGE Paris Sorbonne',
+                        'MIAGE Rennes' => 'MIAGE Rennes',
+                        'MIAGE Toulouse' => 'MIAGE Paris Toulouse',
+
+                    ],
+            ))
             ->add('numTel')
             ->add('dateNaissance')
         ;

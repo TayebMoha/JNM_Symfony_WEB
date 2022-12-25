@@ -2,10 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\Logement;
 use App\Entity\Utilisateur;
 use App\Form\RegistrationFormType;
 use App\Security\EmailVerifier;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bridge\Doctrine\ManagerRegistry;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,6 +25,27 @@ class RegistrationController extends AbstractController
     public function __construct(EmailVerifier $emailVerifier)
     {
         $this->emailVerifier = $emailVerifier;
+    }
+
+    #[Route('/product', name: 'product')]
+    public function index(EntityManagerInterface $entityManager): Response
+    {
+        $logement = new Logement();
+
+        $user = new Utilisateur();
+
+        // relates this product to the category
+
+        $logement->addRefUtilisateur($user);
+
+        $entityManager->persist($logement);
+        $entityManager->persist($user);
+        $entityManager->flush();
+
+        return new Response(
+            'Saved new product with id: '.$user->getId()
+            .' and new category with id: '.$logement->getId()
+        );
     }
 
     #[Route('/register', name: 'app_register')]

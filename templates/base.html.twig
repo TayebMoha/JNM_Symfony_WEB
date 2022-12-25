@@ -21,7 +21,7 @@
                 <li><a{%if app.request.get('_route') == 'app_reservation' %} class="active"{% endif %} href="{{ path('app_reservation') }}">Réservation</a></li>
                 <li><a{%if app.request.get('_route') == 'app_concours' %} class="active"{% endif %} href="{{ path('app_concours') }}">Concours</a></li>
                 <li><a{%if app.request.get('_route') == 'app_nos_partenaires' %} class="active"{% endif %} href="{{ path('app_nos_partenaires') }}">Nos Partenaires</a></li>
-                <li class="deconnexion"><a{%if app.request.get('_route') == 'app_logout' %} class="active"{% endif %} href="{{ path('app_logout') }}">Déconnexion</a></li>
+                <li><a id="deconnexion"{%if app.request.get('_route') == 'app_logout' %} class="active"{% endif %} href="{{ path('app_logout') }}">Déconnexion</a></li>
             {% else %}
                 <li><a{%if app.request.get('_route') == 'app_homepage' %} class="active"{% endif %} href="{{ path('app_homepage') }}">Infos & Communications</a></li>
                 <li><a{%if app.request.get('_route') == 'app_nos_partenaires' %} class="active"{% endif %} href="{{ path('app_nos_partenaires') }}">Nos Partenaires</a></li>

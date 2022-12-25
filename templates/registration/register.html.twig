@@ -9,21 +9,65 @@
 
 
 
-    <div class="formulaire">
-        <h1>Register</h1>
-        {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.nom) }}
-        {{ form_row(registrationForm.prenom) }}
-        {{ form_row(registrationForm.adresse) }}
-        {{ form_row(registrationForm.numTel) }}
-        {{ form_row(registrationForm.provenance) }}
-        {{ form_row(registrationForm.dateNaissance) }}
-        {{ form_row(registrationForm.agreeTerms) }}
-        <button type="submit" class="btn">Register</button>
+    <div class="inscription">
+        <h2>Inscription</h2>
+        <h3>    </h3>
+
+        <div class="form">
+            {{ form_start(registrationForm) }}
+            <div class="mail">
+                {{ form_widget(registrationForm.email, {'attr': {'placeholder': 'Email'}}) }}
+                <span class="material-symbols-outlined"> mail </span>
+            </div>
+
+            <div class="password">
+                {{ form_widget(registrationForm.plainPassword, {'attr': {'placeholder': 'Mot de passe'}}) }}
+                <span class="material-symbols-outlined"> key </span>
+            </div>
+
+            <div class="nom">
+                {{ form_widget(registrationForm.nom, {'attr': {'placeholder': 'Nom'}}) }}
+                <span class="material-symbols-outlined"> account_circle </span>
+            </div>
+
+            <div class="prenom">
+                {{ form_widget(registrationForm.prenom, {'attr': {'placeholder': 'Prénom'}}) }}
+                <span class="material-symbols-outlined"> account_circle </span>
+            </div>
+
+            <div class="adresse">
+                {{ form_widget(registrationForm.adresse, {'attr': {'placeholder': 'Adresse'}}) }}
+                <span class="material-symbols-outlined"> home </span>
+            </div>
+
+            <div class="numTel">
+                {{ form_widget(registrationForm.numTel, {'attr': {'placeholder': 'Téléphone'}}) }}
+                <span class="material-symbols-outlined"> phone </span>
+            </div>
+
+            <div class="pro">
+                {{ form_widget(registrationForm.provenance, { 'attr' : { 'class' : 'provenance' } }) }}
+                <span class="material-symbols-outlined"> location_on </span>
+            </div>
+
+            <div class="dateNaissance">
+                {{ form_widget(registrationForm.dateNaissance, {'attr': {'placeholder': 'Date de naissance'}}) }}
+                <span class="material-symbols-outlined"> event </span>
+            </div>
+
+            <div class="agreeTerms">
+                <div class="lab">
+                    {{ form_label(registrationForm.agreeTerms) }}
+                </div>
+                <div class="case">
+                    {{ form_widget(registrationForm.agreeTerms) }}
+                 </div>
+            </div>
+
+            <div class="bouton">
+                <button type="submit" class="btn">Inscription</button>
+            </div>
+        </div>
     </div>
 
 
@@ -32,10 +76,115 @@
     {{ form_end(registrationForm) }}
 
     <style>
-        .formulaire{
-            margin:auto;
-            height:200px;
+        @keyframes rotate {
+            100% {
+                background-position: 15% 50%;
+            }
         }
+        body {
+            background-image: url({{ asset('images/waves.svg')}});
+            background-size: 130rem;
+            background-repeat: no-repeat;
+            animation: rotate 6s infinite alternate linear;
+        }
+        .inscription {
+            position: relative;
+            margin : auto;
+            margin-top: 10%;
+            margin-bottom: 5%;
+            z-index: 3;
+            padding: 38px 30px 44px;
+            border-radius: 22px;
+            background: #161616;
+            text-align: center;
+            width: 690px;
+        }
+
+        .inscription > h2 {
+            color: rgba(255, 255, 255, 0.38);
+            font-size: 36px;
+            font-weight: 500;
+            margin: 0 0 4px;
+        }
+
+        .inscription > h3 {
+            color: rgba(255, 255, 255, 0.38);
+            margin: 0 0 30px;
+            font-weight: 500;
+            font-size: 16px;
+        }
+
+        form {
+            place-items: center;
+            width: 100%;
+            margin: 0;
+        }
+
+        .mail, .password, .nom, .prenom, .adresse, .numTel, .pro, .dateNaissance, .agreeTerms, .bouton{
+            color: rgba(255, 255, 255, 0.38);
+            width: 47%;
+            position: relative;
+            font-size: 18px;
+            float: left;
+            margin-top: 16px;
+            margin-left: 13px;
+        }
+
+        span {
+            position: absolute;
+            top: 50%;
+            left: 16px;
+            translate: 0 -50%;
+            color: rgba(255, 255, 255, 0.38);
+        }
+
+        form input,
+        form select,
+        form button {
+            height: 60px;
+            outline: none;
+            padding: 0;
+            font-family: inherit;
+            font-size: 16px;
+            border-radius: 8px;
+        }
+
+        form input, select {
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            font-size: 18px;
+            padding: 0 20px 0 50px;
+            color: inherit;
+        }
+
+        form input:focus, select:focus {
+            border-color: #4b4c4d;
+        }
+
+        form input:focus ~ span, select:focus ~ span  {
+            color: #8e44ad;
+        }
+
+        select, option{
+            text-indent: 47px;
+            background: #161616;
+            width: 100%;
+        }
+
+        .agreeTerms, .bouton{
+            padding-top: 29px;
+        }
+
+        form button {
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.38);
+            color: #f9f9f9;
+            border: 0;
+            font-weight: 600;
+            letter-spacing: 2px;
+            width: 60%;
+        }
+
     </style>
 {% endblock %}
 
