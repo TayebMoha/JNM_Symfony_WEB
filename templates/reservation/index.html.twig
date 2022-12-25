@@ -3,8 +3,16 @@
 {% block title %}Hello ReservationController!{% endblock %}
 
 {% block body %}
+    <a href="{{ path('reservation_app_logement') }}" class="log">Logement</a>
 <style>
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+
+    .log {
+        margin: auto;
+        color: #fff;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-family: FreeMono, monospace;
+    }
 </style>
 
 

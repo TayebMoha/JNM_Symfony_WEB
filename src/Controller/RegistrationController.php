@@ -27,27 +27,6 @@ class RegistrationController extends AbstractController
         $this->emailVerifier = $emailVerifier;
     }
 
-    #[Route('/product', name: 'product')]
-    public function index(EntityManagerInterface $entityManager): Response
-    {
-        $logement = new Logement();
-
-        $user = new Utilisateur();
-
-        // relates this product to the category
-
-        $logement->addRefUtilisateur($user);
-
-        $entityManager->persist($logement);
-        $entityManager->persist($user);
-        $entityManager->flush();
-
-        return new Response(
-            'Saved new product with id: '.$user->getId()
-            .' and new category with id: '.$logement->getId()
-        );
-    }
-
     #[Route('/register', name: 'app_register')]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
     {
@@ -63,8 +42,6 @@ class RegistrationController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
-
-
 
             $entityManager->persist($user);
             $entityManager->flush();

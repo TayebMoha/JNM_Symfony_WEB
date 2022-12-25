@@ -1,0 +1,141 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello LogementController!{% endblock %}
+
+{% block body %}
+
+
+    {% for logement in logements %}
+        <div class="logement{{ logement.id }}">
+        <div class="info">
+            <div class="ville">
+                {{ logement.ville }}
+            </div>
+            <div class="type">
+                {{ logement.typeL }}
+             </div>
+            <div class="description">
+                {{ logement.description }}
+            </div>
+
+             <div class="prix">
+                 <p>{{ logement.prix }}€/nuit</p>
+             </div>
+                <button>Réservé</button>
+        </div>
+        </div>
+    {% endfor %}
+
+
+    <style>
+
+        .logement1{
+            margin-top: 10vw;
+            position: relative;
+            align-items: end;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            height: 510px;
+            background-image:url({{ asset('images/belleville.jpg')}});
+        }
+
+
+        .logement2, .logement3, .logement4, .logement5{
+            margin-top: 100px;
+            position: relative;
+            align-items: end;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            height: 510px;
+        }
+
+        .logement2{
+            background-image:url({{ asset('images/nation.jpg')}});
+        }
+
+        .logement3{
+            background-image:url({{ asset('images/monmartre.jpg')}});
+        }
+
+        .logement4{
+            background-image:url({{ asset('images/ibis.jpg')}});
+        }
+
+        .logement5{
+            background-image:url({{ asset('images/bb.jpg')}});
+        }
+
+
+        .logement1 .info, .logement3 .info, .logement5 .info{
+            width: 50%;
+            float: right;
+            margin-right: 50px;
+            padding: 8vmin;
+            background: hsla(0, 100%, 0%, .5);
+        }
+
+        .logement2 .info, .logement4 .info{
+            width: 50%;
+            float: left;
+            margin: auto;
+            margin-left: 50px;
+            padding: 8vmin;
+            background: hsla(0, 100%, 0%, .5);
+        }
+
+
+        .ville{
+            text-align: start;
+            color: white;
+            font-weight: 600;
+            font-size: 2vw;
+            margin-bottom: 20px;
+        }
+
+        .description, .prix, .type{
+            text-align: start;
+            color: white;
+            font-weight: 700;
+        }
+
+        .description{
+            margin-bottom: 30px;
+        }
+
+        .type{
+            margin-bottom: 30px;
+            font-weight: 800;
+
+        }
+
+        button{
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.38);
+            color: #f9f9f9;
+            border: 0;
+            font-weight: 600;
+            letter-spacing: 2px;
+            width: 100%;
+            height: 60px;
+            outline: none;
+            padding: 0;
+            font-family: inherit;
+            font-size: 16px;
+            border-radius: 8px;
+            margin-top: 45px;
+            margin-bottom: -17px;
+        }
+    </style>
+{% endblock %}
