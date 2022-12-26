@@ -25,7 +25,7 @@
     {% endfor %}
 
     <div class="reservation">
-        <h2>Avez-vous réservé un logement ?</h2>
+        <h2>Réservé</h2>
         <h3>    </h3>
         <div class="form">
             {{ form_start(logementForm) }}
@@ -44,9 +44,7 @@
     <style>
         .reservation {
             position: relative;
-            margin : auto;
-            margin-top: 10%;
-            margin-bottom: 5%;
+            margin: 6% auto 5%;
             z-index: 3;
             padding: 38px 30px 44px;
             border-radius: 22px;
@@ -128,39 +126,39 @@
         }
 
          .logement1{
-             margin-top: 300px;
+             margin-top: 12vw;
              position: relative;
              align-items: end;
              width: 100%;
-             min-height: 50vh;
+             min-height: 30vw;
              display: flex;
              flex-direction: column;
              justify-content: center;
              background-position: left;
-             height: 300px;
+             height: 30vw;
              background-image:url({{ asset('images/belleville.jpg')}});
-             background-size: 50%;
+             background-size: 50vw;
              background-repeat: no-repeat;
          }
 
 
         .logement2, .logement3, .logement4, .logement5{
-            margin-top: 200px;
+            margin-top: 8vw;
             position: relative;
             align-items: end;
             width: 100%;
-            min-height: 50vh;
+            min-height: 30vw;
             display: flex;
             flex-direction: column;
             justify-content: center;
             background-position: left;
-            height: 300px;
+            height: 30vw;
+            background-size: 50vw;
+            background-repeat: no-repeat;
         }
 
         .logement2{
             background-image:url({{ asset('images/nation.jpg')}});
-            background-size: 50%;
-            background-repeat: no-repeat;
             background-position: right;
         }
 
@@ -227,6 +225,5 @@
             font-weight: 800;
 
         }
-
     </style>
 {% endblock %}
