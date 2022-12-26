@@ -36,6 +36,11 @@ class Logement
         $this->refUtilisateur = new ArrayCollection();
     }
 
+    public function __toString() : string
+    {
+        return $this->getVille();
+    }
+
     public function getId(): ?int
     {
         return $this->id;

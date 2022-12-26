@@ -6,73 +6,183 @@
 
     {% for logement in logements %}
         <div class="logement{{ logement.id }}">
-        <div class="info">
-            <div class="ville">
-                {{ logement.ville }}
-            </div>
-            <div class="type">
-                {{ logement.typeL }}
-             </div>
-            <div class="description">
-                {{ logement.description }}
-            </div>
+            <div class="info">
+                <div class="ville">
+                    {{ logement.ville }}
+                </div>
+                <div class="type">
+                    {{ logement.typeL }}
+                </div>
+                <div class="description">
+                    {{ logement.description }}
+                </div>
 
-             <div class="prix">
-                 <p>{{ logement.prix }}€/nuit</p>
-             </div>
-                <button>Réservé</button>
-        </div>
+                <div class="prix">
+                    <p>{{ logement.prix }}€/nuit</p>
+                </div>
+            </div>
         </div>
     {% endfor %}
 
-    <style>
+    <div class="reservation">
+        <h2>Avez-vous réservé un logement ?</h2>
+        <h3>    </h3>
+        <div class="form">
+            {{ form_start(logementForm) }}
+            <div class="liste">
+                {{ form_widget(logementForm.refLogement) }}
+                <span class="material-symbols-outlined"> home </span>
+            </div>
+            <div class="bouton">
+                <button type="submit" class="btn">Enregistrer</button>
+            </div>
+        </div>
+    </div>
 
-        .logement1{
-            margin-top: 10vw;
+    {{ form_end(logementForm) }}
+
+    <style>
+        .reservation {
             position: relative;
-            align-items: end;
-            width: 100%;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            height: 510px;
-            background-image:url({{ asset('images/belleville.jpg')}});
+            margin : auto;
+            margin-top: 10%;
+            margin-bottom: 5%;
+            z-index: 3;
+            padding: 38px 30px 44px;
+            border-radius: 22px;
+            background: #161616;
+            text-align: center;
+            width: 690px;
         }
+
+        .reservation > h2 {
+            color: rgba(255, 255, 255, 0.38);
+            font-size: 36px;
+            font-weight: 500;
+            margin: 0 0 4px;
+        }
+
+        .reservation > h3 {
+            color: rgba(255, 255, 255, 0.38);
+            margin: 0 0 30px;
+            font-weight: 500;
+            font-size: 16px;
+        }
+
+        form {
+            place-items: center;
+            width: 100%;
+            margin: 0;
+        }
+
+        .liste, .bouton{
+            width: 47%;
+            position: relative;
+            font-size: 18px;
+            float: left;
+            margin-top: 16px;
+            margin-left: 13px;
+        }
+
+        span {
+            position: absolute;
+            top: 50%;
+            left: 16px;
+            translate: 0 -50%;
+            color: rgba(255, 255, 255, 0.38);
+        }
+
+        form select,
+        form button {
+            height: 60px;
+            outline: none;
+            padding: 0;
+            font-family: inherit;
+            font-size: 16px;
+            border-radius: 8px;
+            color: rgba(255, 255, 255, 0.38);
+        }
+
+        form input:focus, select:focus {
+            border-color: #4b4c4d;
+        }
+
+        form input:focus ~ span, select:focus ~ span  {
+            color: #8e44ad;
+        }
+
+        select{
+            text-indent: 47px;
+            background: #161616;
+            width: 100%;
+        }
+
+        form button {
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.38);
+            color: #f9f9f9;
+            border: 0;
+            font-weight: 600;
+            letter-spacing: 2px;
+            width: 60%;
+        }
+
+         .logement1{
+             margin-top: 300px;
+             position: relative;
+             align-items: end;
+             width: 100%;
+             min-height: 50vh;
+             display: flex;
+             flex-direction: column;
+             justify-content: center;
+             background-position: left;
+             height: 300px;
+             background-image:url({{ asset('images/belleville.jpg')}});
+             background-size: 50%;
+             background-repeat: no-repeat;
+         }
 
 
         .logement2, .logement3, .logement4, .logement5{
-            margin-top: 100px;
+            margin-top: 200px;
             position: relative;
             align-items: end;
             width: 100%;
-            min-height: 100vh;
+            min-height: 50vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            height: 510px;
+            background-position: left;
+            height: 300px;
         }
 
         .logement2{
             background-image:url({{ asset('images/nation.jpg')}});
+            background-size: 50%;
+            background-repeat: no-repeat;
+            background-position: right;
         }
 
         .logement3{
             background-image:url({{ asset('images/monmartre.jpg')}});
+            background-size: 50%;
+            background-repeat: no-repeat;
+            background-position: left;
         }
 
         .logement4{
             background-image:url({{ asset('images/ibis.jpg')}});
+            background-size: 50%;
+            background-repeat: no-repeat;
+            background-position: right;
         }
 
         .logement5{
             background-image:url({{ asset('images/bb.jpg')}});
+            background-size: 50%;
+            background-repeat: no-repeat;
+            background-position: left;
         }
 
 
@@ -81,7 +191,7 @@
             float: right;
             margin-right: 50px;
             padding: 8vmin;
-            background: hsla(0, 100%, 0%, .5);
+            background: #161616;
         }
 
         .logement2 .info, .logement4 .info{
@@ -90,7 +200,7 @@
             margin: auto;
             margin-left: 50px;
             padding: 8vmin;
-            background: hsla(0, 100%, 0%, .5);
+            background: #161616;
         }
 
 
@@ -118,22 +228,5 @@
 
         }
 
-        button{
-            cursor: pointer;
-            background: rgba(255, 255, 255, 0.38);
-            color: #f9f9f9;
-            border: 0;
-            font-weight: 600;
-            letter-spacing: 2px;
-            width: 100%;
-            height: 60px;
-            outline: none;
-            padding: 0;
-            font-family: inherit;
-            font-size: 16px;
-            border-radius: 8px;
-            margin-top: 45px;
-            margin-bottom: -17px;
-        }
     </style>
 {% endblock %}
