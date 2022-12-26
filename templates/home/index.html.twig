@@ -2,6 +2,7 @@
 
 {% block title %}Infos & Communication{% endblock %}
 
+
 {% block body %}
     <div id="accueil">
         <div id="compte_a_rebours">
@@ -9,9 +10,9 @@
             <h2 id="jours"></h2>
         </div>
         <div id="infos">
-            <h2 id="participant">xx Participants</h2>
-            <h2 id="miages">21 MIAGE</h2>
-            <h2 id="partenaire">xx Partenaires</h2>
+            <h2 id="participant">{{nbusers}} Participants</h2>
+            <h2 id="miages">{{ nbmiages}} MIAGE</h2>
+            <h2 id="partenaire">{{ nbsponsors }} Partenaires</h2>
         </div>
     </div>
 

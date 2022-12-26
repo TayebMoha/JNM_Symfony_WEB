@@ -2,9 +2,10 @@
 
 namespace App\Controller;
 
-use App\Entity\Logement;
+use App\Entity\Video;
 use App\Entity\Utilisateur;
 use App\Form\RegistrationFormType;
+use App\Repository\VideoRepository;
 use App\Security\EmailVerifier;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Doctrine\ManagerRegistry;
@@ -28,7 +29,7 @@ class RegistrationController extends AbstractController
     }
 
     #[Route('/register', name: 'app_register')]
-    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
+    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager, VideoRepository $videoRepository): Response
     {
         $user = new Utilisateur();
         $form = $this->createForm(RegistrationFormType::class, $user);
@@ -45,6 +46,11 @@ class RegistrationController extends AbstractController
 
             $entityManager->persist($user);
             $entityManager->flush();
+
+            $refvid = $videoRepository->findOneBy(['miage' => $user->getProvenance()]);
+            $user->setRefVideo($refvid);
+            $entityManager->flush();
+
 
             // generate a signed url and email it to the user
             $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
