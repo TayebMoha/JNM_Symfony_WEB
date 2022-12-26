@@ -16,6 +16,7 @@ class NavigoType extends AbstractType
         $builder
             ->add('refNavigo', EntityType::class,[
                 'class'=>Navigo::class,
+                'placeholder'=> 'Formules',
         ]);
     }
 
