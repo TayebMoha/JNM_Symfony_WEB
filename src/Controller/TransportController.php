@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Form\NavigoType;
 use App\Repository\NavigoRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -20,9 +21,18 @@ class TransportController extends AbstractController
     {
         //on appel la liste de tous les transports
         $transports = $transportRepo->findAll();
+        $user = $this->getUser();
+        $form = $this->createForm(NavigoType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()){
+            $entityManager->persist($user);
+            $entityManager->flush();
+        }
 
         return $this->render('transport/index.html.twig', [
             'transports' => $transports,
+            'form'=>$form->createView(),
         ]);
     }
 }

@@ -6,16 +6,15 @@
     <div class="transport">
         <div class="info">
             <div class="navigo">
+                {{ form_start(form) }}
                 <p>Réservez votre Navigo</p>
-                <select></select>
-                <div class="bouton">
-                <button>Réservé</button>
+                <div class="refnav">
+                    {{ form_widget(form.refNavigo, {'attr': {'placeholder': 'refNavigo'}}) }}
                 </div>
-                <p class="note">*
-                    {% for transport in transports %}
-                    Formule {{ transport.id }} : {{ transport.nbjours}} jours {{ transport.prix}}€<br>
-                    {% endfor %}
-                </p>
+                <div class="bouton">
+                    <button type="submit" class="btn">Réserver</button>
+                </div>
+                {{ form_end(form) }}
 
             </div>
             <div class="billets"><a href="https://www.ratp.fr/titres-et-tarifs">Réservez vos billets</a></div>
@@ -72,17 +71,62 @@
             width: 80%;
         }
 
+        form input, select {
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            font-size: 18px;
+            padding: 0 20px 0 50px;
+            color: inherit;
+        }
+
+        form input:focus, select:focus {
+            border-color: #8e44ad;
+        }
+
+        form input:focus ~ select, select:focus ~ select  {
+            color: #8e44ad;
+        }
+
+        form button {
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.38);
+            color: #f9f9f9;
+            border: 0;
+            font-weight: 600;
+            letter-spacing: 2px;
+            width: 60%;
+        }
+
+        select, option{
+            background: #161616;
+            width: auto;
+        }
+
+        form input,
+        form select,
+        form button {
+            height: 60px;
+            outline: none;
+            padding: 0;
+            font-family: inherit;
+            font-size: 16px;
+            border-radius: 8px;
+        }
+
+
+        span {
+            position: absolute;
+            top: 50%;
+            left: 16px;
+            translate: 0 -50%;
+            color: rgba(255, 255, 255, 0.38);
+        }
+
         .billets{
             padding: 38px 30px 44px;
         }
 
-        .navigo .note{
-            margin-top: 20px;
-            text-align: left;
-            font-size: 12px;
-        }
-
-        .navigo select{
+        .navigo .refnav{
             margin-top:30px;
             margin-bottom: 10px;
         }

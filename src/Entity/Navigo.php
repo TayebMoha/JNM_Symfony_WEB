@@ -46,6 +46,11 @@ class Navigo
         return $this;
     }
 
+    public function __toString() : string
+    {
+        return 'Formule '.$this->getId().' : '.$this->getNbjours().' jours '.($this->getPrix()).'€';
+    }
+
     public function getPrix(): ?int
     {
         return $this->prix;
