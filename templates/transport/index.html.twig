@@ -1,0 +1,125 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello TransportController!{% endblock %}
+
+{% block body %}
+    <div class="transport">
+        <div class="info">
+            <div class="navigo">
+                <p>Réservez votre Navigo</p>
+                <select></select>
+                <div class="bouton">
+                <button>Réservé</button>
+                </div>
+                <p class="note">*
+                    {% for transport in transports %}
+                    Formule {{ transport.id }} : {{ transport.nbjours}} jours {{ transport.prix}}€<br>
+                    {% endfor %}
+                </p>
+
+            </div>
+            <div class="billets"><a href="https://www.ratp.fr/titres-et-tarifs">Réservez vos billets</a></div>
+        </div>
+        <div class="carte">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d49756.792325157076!2d2.2756850352726903!3d48.868872272061346!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x7e4ea73444aef2aa!2sNanterre%20Universit%C3%A9!5e0!3m2!1sfr!2sfr!4v1672013106659!5m2!1sfr!2sfr" width="800" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+    </div>
+
+    <style>
+        @keyframes rotate {
+            100% {
+                background-position: 15% 50%;
+            }
+        }
+        body {
+            background-image: url({{ asset('images/waves.svg')}});
+            background-size: 130rem;
+            background-repeat: no-repeat;
+            animation: rotate 6s infinite alternate linear;
+        }
+        .transport{
+            position: relative;
+            margin : auto;
+            margin-top: 10%;
+            margin-bottom: 5%;
+            z-index: 3;
+            padding: 38px 30px 44px;
+            text-align: center;
+            width: 100%;
+        }
+        .info{
+            color: rgba(255, 255, 255, 0.38);
+            width: 45%;
+            position: relative;
+            font-size: 18px;
+            margin-top: 16px;
+            margin-left: 10px;
+            float: left;
+            z-index: 3;
+            text-align: center;
+        }
+        .navigo, .billets{
+            position: relative;
+            margin : auto;
+            margin-bottom: 5%;
+            margin-top:3%;
+            z-index: 3;
+            padding: 38px 30px 10px;
+            border-radius: 22px;
+            background: #161616;
+            text-align: center;
+            width: 80%;
+        }
+
+        .billets{
+            padding: 38px 30px 44px;
+        }
+
+        .navigo .note{
+            margin-top: 20px;
+            text-align: left;
+            font-size: 12px;
+        }
+
+        .navigo select{
+            margin-top:30px;
+            margin-bottom: 10px;
+        }
+
+        .billets a {
+            color: rgba(255, 255, 255, 0.38);
+            outline: none;
+            text-decoration: none;
+        }
+
+        .billets a:hover{
+            color: #8e44ad;
+        }
+
+        .carte{
+            position: relative;
+            margin : auto;
+            display: flex;
+
+        }
+        iframe{
+            border-radius: 10px;
+        }
+        button{
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.38);
+            color: #f9f9f9;
+            border: 0;
+            font-weight: 600;
+            letter-spacing: 2px;
+            width: 100%;
+            height: 60px;
+            outline: none;
+            padding: 0;
+            font-family: inherit;
+            font-size: 16px;
+            border-radius: 8px;
+        }
+    </style>
+{% endblock %}
