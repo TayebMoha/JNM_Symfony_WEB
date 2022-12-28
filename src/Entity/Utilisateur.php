@@ -72,6 +72,10 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
         $this->refActivite = new ArrayCollection();
         $this->refStatut = new ArrayCollection();
     }
+    public function __toString() : string
+    {
+        return $this->getNom().' '.$this->getPrenom();
+    }
 
     public function getId(): ?int
     {
