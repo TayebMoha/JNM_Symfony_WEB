@@ -2,9 +2,11 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Activite;
 use App\Entity\Utilisateur;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
@@ -46,6 +48,8 @@ class UtilisateurCrudController extends AbstractCrudController
                 ->hideOnForm(),
             AssociationField::new('refLogement')->setCrudController(LogementCrudController::class)
                 ->hideOnForm(),
+            ArrayField::new('roles')->hideOnIndex(),
+            //AssociationField::new('refActivite')->setCrudController(ActiviteCrudController::class),
         ];
     }
 }
