@@ -26,6 +26,12 @@ class Partenaire
     #[ORM\Column(type: Types::TEXT)]
     private ?string $dons = null;
 
+    #[ORM\Column(type: Types::TEXT)]
+    private ?string $logo = null;
+
+    #[ORM\Column(type: Types::TEXT)]
+    private ?string $siteweb = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -75,6 +81,30 @@ class Partenaire
     public function setDons(string $dons): self
     {
         $this->dons = $dons;
+
+        return $this;
+    }
+
+    public function getLogo(): ?string
+    {
+        return $this->logo;
+    }
+
+    public function setLogo(string $logo): self
+    {
+        $this->logo = $logo;
+
+        return $this;
+    }
+
+    public function getSiteweb(): ?string
+    {
+        return $this->siteweb;
+    }
+
+    public function setSiteweb(string $siteweb): self
+    {
+        $this->siteweb = $siteweb;
 
         return $this;
     }
