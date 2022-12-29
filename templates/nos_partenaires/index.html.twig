@@ -3,18 +3,197 @@
 {% block title %}Hello NosPartenairesController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h2 class="titre">Nos Partenaires</h2>
+    <div class="container">
+        {% for partenaire in partenaires %}
+            <a href="{{ partenaire.siteweb }}"> <img src="{{ partenaire.logo() }}" alt="{{ partenaire.nom }}"/></a>
+        {% endfor %}
+    </div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/tmohammedi/UNI/ProjetWEBPHP/JNM_Symfony_WEB/src/Controller/NosPartenairesController.php'|file_link(0) }}">src/Controller/NosPartenairesController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/tmohammedi/UNI/ProjetWEBPHP/JNM_Symfony_WEB/templates/nos_partenaires/index.html.twig'|file_link(0) }}">templates/nos_partenaires/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <div class="formulaire">
+    <div class="inscription">
+        <h2>Formulaire</h2>
+        <h3>    </h3>
+        <div class="form">
+            {{ form_start(partenaireForm) }}
+            <div class="nom">
+                {{ form_widget(partenaireForm.nom, {'attr': {'placeholder': 'Nom'}}) }}
+                <span class="material-symbols-outlined"> groups </span>
+            </div>
+            <div class="adresse">
+                {{ form_widget(partenaireForm.adresse, {'attr': {'placeholder': 'Adresse'}}) }}
+                <span class="material-symbols-outlined"> location_on </span>
+            </div>
+            <div class="contact">
+                {{ form_widget(partenaireForm.contact, {'attr': {'placeholder': 'Contact'}}) }}
+                <span class="material-symbols-outlined"> mail </span>
+            </div>
+            <div class="dons">
+                {{ form_widget(partenaireForm.dons, {'attr': {'placeholder': 'Dons'}}) }}
+                <span class="material-symbols-outlined"> redeem </span>
+            </div>
+            <div class="dons">
+                {{ form_widget(partenaireForm.logo, {'attr': {'placeholder': 'Logo'}}) }}
+                <span class="material-symbols-outlined"> image </span>
+            </div>
+            <div class="dons">
+                {{ form_widget(partenaireForm.siteweb, {'attr': {'placeholder': 'Site Web'}}) }}
+                <span class="material-symbols-outlined"> link </span>
+            </div>
+                <button type="submit" class="btn">Envoyer</button>
+        </div>
+    </div>
+
+    {{ form_end(partenaireForm) }}
+    </div>
+
+    <style>
+        body{
+            background: #191919;
+        }
+        .titre{
+            color: rgba(255, 255, 255, 0.38);
+            font-size: 36px;
+            font-weight: 500;
+            margin: auto;
+            margin-top: 10%;
+        }
+        .container{
+            margin : auto;
+            margin-top:2%;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+            gap: 5px 2em;    align-items: center;
+
+        }
+        .container:first-child {
+            align-self: center;
+        }
+        img{
+            width: 200px;
+        }
+        @keyframes rotate {
+            100% {
+                background-position: 15% 50%;
+            }
+        }
+
+        .formulaire{
+            background-image: url({{ asset('images/waves.svg')}});
+            background-size: 130rem;
+            background-repeat: no-repeat;
+            animation: rotate 6s infinite alternate linear;
+        }
+        .inscription {
+            position: relative;
+            margin : auto;
+            margin-top: 5%;
+            margin-bottom: 2%;
+            z-index: 3;
+            padding: 38px 30px 44px;
+            border-radius: 22px;
+            background: #161616;
+            text-align: center;
+            width: 380px;
+        }
+
+        .inscription > h2 {
+            color: rgba(255, 255, 255, 0.38);
+            font-size: 36px;
+            font-weight: 500;
+            margin: 0 0 4px;
+        }
+
+        .inscription > h3 {
+            color: rgba(255, 255, 255, 0.38);
+            margin: 0 0 30px;
+            font-weight: 500;
+            font-size: 16px;
+        }
+
+        form {
+            display: grid;
+            gap: 16px;
+            place-items: center;
+            width: 100%;
+            margin: 0;
+        }
+
+        .nom, .adresse, .contact, .dons {
+            color: rgba(255, 255, 255, 0.38);
+            width: 100%;
+            position: relative;
+        }
+
+        span {
+            position: absolute;
+            top: 50%;
+            left: 16px;
+            translate: 0 -50%;
+            color: rgba(255, 255, 255, 0.38);
+        }
+
+        form input,
+        form button {
+            width: 100%;
+            height: 60px;
+            outline: none;
+            padding: 0;
+            font-family: inherit;
+            font-size: 16px;
+            border-radius: 8px;
+        }
+
+        form input {
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            font-size: 18px;
+            padding: 0 20px 0 50px;
+            color: inherit;
+        }
+
+        form input:focus {
+            border-color: #4b4c4d;
+        }
+
+        form input:focus ~ span {
+            color: #8e44ad;
+        }
+
+        form textarea {
+            background: transparent;
+            border: 2px solid rgba(259, 255, 255, 0.1);
+            font-size: 18px;
+            padding: 18px 20px 0 50px;
+            color: inherit;
+            height: 60px;
+            width: 319px;
+            resize : none;
+            border-radius : 8px
+        }
+
+
+
+        form textarea:focus {
+            outline: none;
+            border-color:#4b4c4d;
+        }
+
+        form textarea:focus ~ span {
+            color: #8e44ad;
+        }
+
+
+        form button {
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.38);
+            color: #f9f9f9;
+            border: 0;
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+
+    </style>
 {% endblock %}
