@@ -6,6 +6,7 @@ use App\Entity\Activite;
 use App\Entity\Contact;
 use App\Entity\Logement;
 use App\Entity\Navigo;
+use App\Entity\Partenaire;
 use App\Entity\Utilisateur;
 use App\Entity\Video;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
@@ -41,6 +42,6 @@ class PortailAdminController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Logements', 'fas fa-hotel', Logement::class);
         yield MenuItem::linkToCrud('Navigos', 'fas fa-train', Navigo::class);
         yield MenuItem::linkToCrud('Activités', 'fas fa-gamepad', Activite::class);
-
+        yield MenuItem::linkToCrud('Partenaires', 'fas fa-gift', Partenaire::class);
     }
 }
