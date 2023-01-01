@@ -26,7 +26,7 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     private array $roles = [];
 
     /**
-     * @var string The hashed password
+     * @var "string" The hashed password
      */
     #[ORM\Column]
     private ?string $password = null;
@@ -310,4 +310,8 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+    const REFACTIVITE = array(
+        'refActivite.paintball' => 'REFACTIVITE_PAINTBALL'
+    );
 }

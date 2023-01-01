@@ -33,6 +33,11 @@ class Activite
         $this->refUtilisateur = new ArrayCollection();
     }
 
+    public function __toString() : string
+    {
+        return $this->getCategorie();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -86,7 +91,7 @@ class Activite
     {
         if (!$this->refUtilisateur->contains($refUtilisateur)) {
             $this->refUtilisateur->add($refUtilisateur);
-            $refUtilisateur->addRefActivite($this);
+            $refUtilisateur->setRefActivite($this);
         }
 
         return $this;
@@ -95,7 +100,9 @@ class Activite
     public function removeRefUtilisateur(Utilisateur $refUtilisateur): self
     {
         if ($this->refUtilisateur->removeElement($refUtilisateur)) {
-            $refUtilisateur->removeRefActivite($this);
+            if ($refUtilisateur->getRefActivite() === $this) {
+                $refUtilisateur->setRefActivite(null);
+            }
         }
 
         return $this;
