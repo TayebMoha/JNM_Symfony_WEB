@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello NousContacterController!{% endblock %}
+{% block title %}Nous Contacter{% endblock %}
 
 {% block body %}
     <div class="login">
@@ -9,23 +9,27 @@
 
         <!-- <h3>Content de vous revoir user</h3> -->
 
-        <form class="login-form">
+        <div class="login-form">
+            {{ form_start(form) }}
             <div class="textbox">
-                <input type="text" placeholder="Nom" required/>
+                {{ form_widget(form.Nom, {'attr': {'placeholder': 'Nom Prénom'}}) }}
                 <span class="material-symbols-outlined"> account_circle </span>
             </div>
             <div class="textbox">
-                <input type="email" placeholder="Mail" required/>
+                {{ form_widget(form.email, {'attr': {'placeholder': 'Adresse mail'}}) }}
                 <span id="message" class="material-symbols-outlined"> mail </span>
             </div>
             <div class="messagebox">
-                <textarea placeholder="Message" style="height:180px;" required></textarea>
+                {{ form_widget(form.message, {'attr': {'placeholder': 'Message'}}) }}
                 <span class="material-symbols-outlined"> message </span>
             </div>
 
             <!--<button type="submit">Créer un Compte</button>-->
             <button type="submit">Envoyer Message</button>
-        </form>
+            {{ form_end(form) }}
+        </div>
+
+
     </div>
 
     <style>
@@ -69,7 +73,6 @@
 
         .login-form {
             display: grid;
-            gap: 16px;
             place-items: center;
             width: 100%;
             margin: 0;
@@ -79,11 +82,12 @@
             color: rgba(255, 255, 255, 0.38);
             width: 100%;
             position: relative;
+            padding-top: 10px;
         }
 
         .textbox span {
             position: absolute;
-            top: 50%;
+            top: 55%;
             left: 16px;
             translate: 0 -50%;
             color: rgba(255, 255, 255, 0.38);
@@ -131,10 +135,14 @@
         .messagebox span{
 
             position: absolute;
-            top: 18%;
+            top: 22%;
             left: 16px;
             translate: 0 -50%;
             color: rgba(255, 255, 255, 0.38);
+        }
+
+        .messagebox{
+            padding-bottom: 10px;
         }
 
         .login-form textarea:focus {
