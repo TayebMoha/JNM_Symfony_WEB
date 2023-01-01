@@ -74,10 +74,30 @@
         <h1> Informations</h1>
     </div>
 
+    {% for activite in activites %}
+        <div class="activite{{ activite.id}}" id="act{{ activite.id }}">
+            <span class="material-symbols-outlined" id="actN"> Nightlife </span>
+            <div class="info">
+                <div class="categ">
+                    {{ activite.categorie }}
+                </div>
 
-cc
+                <div class="description">
+                    {{ activite.description }}
+                </div>
 
-    <div class="reservation">
+                <div class="prix">
+                    <p>{{ activite.prix }}€ / Personne</p>
+                </div>
+
+                <div class="R">
+                    <a href="#reserv"> Réservez </a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+    <div class="reservation" id="reserv">
         <h2>Avez-vous réservé un logement ?</h2>
         <h3>    </h3>
         <div class="form">
