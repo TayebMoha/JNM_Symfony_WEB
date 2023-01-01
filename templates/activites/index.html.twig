@@ -1,0 +1,410 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ActivitesController!{% endblock %}
+
+{% block body %}
+
+    <div class="present">
+        <div class="infos">
+            <h1>MultiActivités</h1>
+            <div class="hr"></div>
+            <p>
+                Découvrez nos activités, en intérieur ou extérieur et restauration.<br>
+                Resserez les liens entre collaborateurs avec nos prestations tournoi, pour des moments de rires et de cohésion !
+            </p>
+        </div>
+    </div>
+
+    <section id="activitesPro">
+        <div class="images">
+            <ul>
+                <li class="acti">
+                    <div>
+                        <img src="{{ asset('images/paintballV.jfif')}}" alt=""/>
+                    </div>
+                    <span> PaintBall </span>
+                    <a href="#act3"> En savoir plus </a>
+                </li>
+
+                <li class="acti">
+                    <div>
+                        <img src="{{ asset('images/escapeG.jfif')}}" alt=""/>
+                    </div>
+                    <span> Escape Game </span>
+                    <a href="#act4"> En savoir plus </a>
+                </li>
+
+                <li class="acti">
+                    <div>
+                        <img src="{{ asset('images/visitParis.jfif')}}" alt=""/>
+                    </div>
+                    <span> Visite de Paris </span>
+                    <a href="#act5"> En savoir plus </a>
+                </li>
+
+                <li class="acti">
+                    <div >
+                        <img src="{{ asset('images/goodies.jpeg')}}" alt=""/>
+                    </div>
+                    <span> Chasse aux trésors </span>
+                    <a href="#act6"> En savoir plus </a>
+                </li>
+
+                <li class="acti">
+                    <div >
+                        <img src="{{ asset('images/cinema.jfif')}}" alt=""/>
+                    </div>
+                    <span> Cinema en plein air </span>
+                    <a href="#act7"> En savoir plus </a>
+                </li>
+
+                <li class="acti">
+                    <div>
+                        <img src="{{ asset('images/gala.jfif')}}" alt=""/>
+                    </div>
+                    <span> Gala de MIAGE </span>
+                    <a href="#act9"> En savoir plus </a>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+
+    <div class="information">
+        <h1> Informations</h1>
+    </div>
+
+
+cc
+
+    <div class="reservation">
+        <h2>Avez-vous réservé un logement ?</h2>
+        <h3>    </h3>
+        <div class="form">
+            {{ form_start(activiteForm) }}
+            <div class="liste">
+                {{ form_widget(activiteForm.refActivite) }}
+            </div>
+            <div class="bouton">
+                <button type="submit" class="btn">Enregistrer</button>
+            </div>
+        </div>
+    </div>
+
+    {{ form_end(activiteForm) }}
+
+
+
+    <style>
+
+        .present{
+            text-align: center;
+            margin: 100px auto auto;
+            min-height: 50vh;
+            width: 100%;
+            float: right;
+            padding: 8vmin;
+            background-image:url({{ asset('/images/img.png')}});
+        }
+
+        .present > h1{
+            color:#FFFFFF;
+            letter-spacing: 1px;
+        }
+
+        .infos{
+            width: 100%;
+            padding: 8vmin;
+            background: hsla(0, 100%, 0%, .5);
+            text-align: center;
+            color: white;
+            font-weight: 700;
+            position: relative;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hr{
+            height:2px;
+            margin: 20px 280px 20px 280px;
+            background: rgb(158, 58, 220);
+        }
+
+        #activitesPro {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .images {
+            margin: 100px auto;
+            margin-bottom: 0;
+            padding: 0 8%;
+        }
+
+        .images ul {
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+
+        .images li{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 2.665%;
+            transition: 0.5s;
+            height: 300px;
+            width: 28%;
+        }
+
+        .images li div {
+            width: 100%;
+            height: 60%;
+            margin-bottom: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        }
+        .images li div img {
+            height: 100%;
+            width: 100%;
+        }
+
+        .images li:hover {
+            transform: scale(1.1);
+            margin: 20px;
+        }
+        .images li span {
+            font-size: 18px;
+            text-align: center;
+            color: rgba(228, 224, 231, 0.93);
+        }
+
+        #activitesPro li a{
+            background-color: #8957bb;
+            color: #fff;
+            padding: 5px 20px;
+            font-size: 15px;
+        }
+
+
+        .activite3, .activite4, .activite5, .activite6,
+        .activite7, .activite8, .activite9{
+            position: relative;
+        }
+
+        .activite3 .info, .activite4 .info, .activite5 .info{
+            position: relative;
+            width: 85%;
+            height: 200px;
+            color: rgba(228, 224, 231, 0.93);
+            background: #161616;
+            align-content: center;
+            font-size: 15px;
+            padding: 5vmin 5vmin 5vmin 20vmin;
+            margin-left: 5%;
+            margin-right: 5%;
+        }
+         .activite6 .info,
+        .activite7 .info{
+            position: relative;
+            width: 85%;
+            height: 220px;
+            color: rgba(228, 224, 231, 0.93);
+            background: #161616;
+            align-content: center;
+            font-size: 15px;
+            padding: 5vmin 5vmin 5vmin 20vmin;
+            margin-left: 5%;
+            margin-right: 5%;
+        }
+
+        .activite9 .info{
+            position: relative;
+            width: 85%;
+            height: 250px;
+            color: rgba(228, 224, 231, 0.93);
+            background: #161616;
+            align-content: center;
+            font-size: 15px;
+            padding: 5vmin 5vmin 5vmin 20vmin;
+            margin-left: 5%;
+            margin-right: 5%;
+        }
+
+
+        .activite3 .info{
+            margin-top: 1vw;
+        }
+
+
+        .activite4 .info, .activite5 .info, .activite6 .info, .activite7 .info,
+        .activite8 .info, .activite9 .info  {
+            margin-top: 50px;
+        }
+
+        .categ{
+            text-align: start;
+            color: rgba(228, 224, 231, 0.93);
+            font-weight: 600;
+            font-size: 2vw;
+            margin-bottom: 20px;
+        }
+
+        .info .R{
+            font-size: 15px;
+            align-content:center;
+            padding: 3% 10% 8% 50%;
+        }
+
+        .info a{
+            background-color: #8957bb;
+            color: rgba(228, 224, 231, 0.93);
+            padding: 5px 20px;
+            font-size: 17px;
+            margin-left:60%;
+            margin-top: 50%;
+        }
+
+        .prix{
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        .information {
+            text-transform: uppercase;
+            position: relative;
+            font-size: 15px;
+            margin-bottom: 10%;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: rgba(228, 224, 231, 0.93);
+
+        }
+
+        .information:before {
+            position: relative;
+            left: 10px;
+            bottom: 0;
+            content: "";
+            background-color: #8957bb;
+            width: 20%;
+            height: 5px;
+            border-radius: 6px;
+        }
+
+        .information:after {
+            position: relative;
+            top: 0;
+            left: -10px;
+            content: "";
+            background-color: #8957bb;
+            width: 20%;
+            height: 5px;
+            border-radius: 6px;
+        }
+
+        #actN{
+            position: absolute;
+            top: 50%;
+            left: 16px;
+            right: 400px;
+            translate: 0 -50%;
+            color: rgb(137, 87, 187);
+        }
+
+        .reservation {
+            position: relative;
+            margin: 6% auto 5%;
+            z-index: 3;
+            padding: 38px 30px 44px;
+            border-radius: 22px;
+            background: #161616;
+            text-align: center;
+            width: 690px;
+        }
+
+        .reservation > h2 {
+            color: rgba(255, 255, 255, 0.38);
+            font-size: 36px;
+            font-weight: 500;
+            margin: 0 0 4px;
+        }
+
+        .reservation > h3 {
+            color: rgba(255, 255, 255, 0.38);
+            margin: 0 0 30px;
+            font-weight: 500;
+            font-size: 16px;
+        }
+
+        form {
+            place-items: center;
+            width: 100%;
+            margin: 0;
+        }
+
+        .liste, .bouton{
+            width: 47%;
+            position: relative;
+            font-size: 18px;
+            float: left;
+            margin-top: 16px;
+            margin-left: 13px;
+        }
+
+        .material-symbols-outlined {
+            position: absolute;
+            top: 50%;
+            left: 16px;
+            translate: 0 -50%;
+            color: rgba(255, 255, 255, 0.38);
+        }
+
+        form select,
+        form button {
+            height: 60px;
+            outline: none;
+            padding: 0;
+            font-family: inherit;
+            font-size: 16px;
+            border-radius: 8px;
+            color: rgba(255, 255, 255, 0.38);
+        }
+
+        form input:focus, select:focus {
+            border-color: #4b4c4d;
+        }
+
+        form input:focus, select:focus {
+            border-color: #8e44ad;
+        }
+
+        form input:focus ~ span, select:focus ~ span  {
+            color: #8e44ad;
+        }
+
+        select{
+            text-indent: 47px;
+            background: #161616;
+            width: 100%;
+        }
+
+        form button {
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.38);
+            color: #f9f9f9;
+            border: 0;
+            font-weight: 600;
+            letter-spacing: 2px;
+            width: 60%;
+        }
+
+
+    </style>
+
+
+{% endblock %}
