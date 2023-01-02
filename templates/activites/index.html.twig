@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ActivitesController!{% endblock %}
+{% block title %} Réservation Activités{% endblock %}
 
 {% block body %}
 
@@ -98,7 +98,7 @@
     {% endfor %}
 
     <div class="reservation" id="reserv">
-        <h2>Avez-vous réservé un logement ?</h2>
+        <h2> Réservez vos activités </h2>
         <h3>    </h3>
         <div class="form">
             {{ form_start(activiteForm) }}
@@ -395,24 +395,6 @@
             color: rgba(255, 255, 255, 0.38);
         }
 
-        form input:focus, select:focus {
-            border-color: #4b4c4d;
-        }
-
-        form input:focus, select:focus {
-            border-color: #8e44ad;
-        }
-
-        form input:focus ~ span, select:focus ~ span  {
-            color: #8e44ad;
-        }
-
-        select{
-            text-indent: 47px;
-            background: #161616;
-            width: 100%;
-        }
-
         form button {
             cursor: pointer;
             background: rgba(255, 255, 255, 0.38);
@@ -422,6 +404,25 @@
             letter-spacing: 2px;
             width: 60%;
         }
+
+        .liste{
+            padding-left: 35px;
+            cursor: pointer;
+        }
+        .liste input{
+            position: absolute;
+            left: 30px;
+        }
+        .liste label{
+            display: block;
+            position: relative;
+            margin: 10px 0;
+            padding-left: 35px;
+            cursor: pointer;
+            align-items: center;
+            color: rgba(255, 255, 255, 0.38);
+        }
+
 
 
     </style>

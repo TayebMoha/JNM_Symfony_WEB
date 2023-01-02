@@ -16,8 +16,12 @@ class ActiviteFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('refActivite')
-        ;
+            ->add('refActivite', EntityType::class, [
+                'class' => Activite::class,
+                'placeholder' => 'Activités',
+                'multiple' => true,
+                'expanded' => true
+                ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
