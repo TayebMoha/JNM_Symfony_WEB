@@ -49,7 +49,7 @@ class UtilisateurCrudController extends AbstractCrudController
             AssociationField::new('refLogement')->setCrudController(LogementCrudController::class)
                 ->hideOnForm(),
             ArrayField::new('roles')->hideOnIndex(),
-            //AssociationField::new('refActivite')->setCrudController(ActiviteCrudController::class),
+            AssociationField::new('refActivite')->setCrudController(ActiviteCrudController::class),
         ];
     }
 }
